@@ -1,0 +1,34 @@
+{%extends "base.html.twig" %}
+{%block title %}
+    Trang chủ
+{%endblock%}
+
+{%block body %}
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Tên việc</th>
+                <th scope="col">Thời gian</th>
+                <th scope="col">Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+             {% for todo in todos %}
+            <tr>
+                <th scope="row">{{todo.id}}</th>
+                <td>{{todo.name}}</td>
+                <td>{{todo.dueDate | date("d/m/Y g:i a")}}</td>
+                <td>
+                    <a href="/todo/details/{{todo.id}}"><button type="button" class="btn btn-success">Xem</button></a>
+                    <a href="/todo/delete/{{todo.id}}"><button type="button" class="btn btn-danger">Xoá</button></a>
+                    <a href="/todo/edit/{{todo.id}}"><button type="button" class="btn btn-warning">Sửa</button></a>
+                </td>
+            </tr>
+             {% endfor %}
+            
+            
+            
+        </tbody>
+    </table>
+{%endblock%}
